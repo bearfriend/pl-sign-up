@@ -1,0 +1,26 @@
+{
+  "name": "sign-up-form",
+  "version": "0.0.0",
+  "authors": [
+    "Danny Gleckler <daniel.gleckler@desire2learn.com>"
+  ],
+  "description": "A Polymer component used for Binder/Brightspace sign-up.",
+  "main": "designer.html",
+  "license": "n/a",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-input": "Polymer/paper-input#~0.4.2",
+    "core-icons": "Polymer/core-icons#~0.4.2",
+    "paper-button": "Polymer/paper-button#~0.4.2",
+    "paper-checkbox": "Polymer/paper-checkbox#~0.4.2",
+    "paper-icon-button": "Polymer/paper-icon-button#~0.4.2",
+    "paper-shadow": "Polymer/paper-shadow#~0.4.2"
+  }
+}

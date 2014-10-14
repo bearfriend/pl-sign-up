@@ -1,0 +1,38 @@
+<link rel="import" href="../core-icons/core-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../paper-shadow/paper-shadow.html">
+
+<polymer-element name="sign-in-form">
+
+  <template>
+    <style>
+      :host {
+	    width: 450px;
+	    max-width: 100%;
+	    position: relative;
+      }
+      #core-card {
+	    width: 100%;
+      }
+    </style>
+	<core-style ref="signInForm"></core-style>
+    <core-card id="core-card" vertical layout>
+	  <paper-shadow z="2"></paper-shadow>
+	  <paper-input label="First Name" willvalidate id="first-name-input" layout vertical></paper-input>
+	  <paper-input label="Last Name" willvalidate id="last-name-input" layout vertical></paper-input>
+      <paper-input label="Email" willvalidate id="email-input" layout vertical></paper-input>
+      <paper-input label="Password" willvalidate id="passw-input" layout vertical type="password"></paper-input>
+	  <span layout horizontal class="form-row">
+		<paper-checkbox class="form-row" label="" id="ssi-checkbox" start></paper-checkbox>
+		<div>I am 13 years of age or older and accept the <paper-button class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.
+	  </span>
+	  <paper-button label="Sign up" id="sign-in-button" class="form-row"></paper-button>
+	  <div class="spacer"></div>
+	  <paper-button class="small-text link form-row">I already have an account. <strong>Sign In</strong></paper-button>
+    </core-card>
+  </template>
+
+</polymer-element>
