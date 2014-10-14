@@ -5,7 +5,7 @@
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-shadow/paper-shadow.html">
 
-<polymer-element name="sign-in-form">
+<polymer-element name="sign-up-form">
 
   <template>
     <style>
@@ -26,10 +26,10 @@
       <paper-input label="Email" willvalidate id="email-input" layout vertical></paper-input>
       <paper-input label="Password" willvalidate id="passw-input" layout vertical type="password"></paper-input>
 	  <span layout horizontal class="form-row">
-		<paper-checkbox class="form-row" label="" id="ssi-checkbox" start></paper-checkbox>
+		<paper-checkbox class="form-row" label="" id="consent-checkbox" start></paper-checkbox>
 		<div>I am 13 years of age or older and accept the <paper-button class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.
 	  </span>
-	  <paper-button label="Sign up" id="sign-in-button" class="form-row"></paper-button>
+	  <paper-button label="Sign up" id="sign-up-button" class="form-row"></paper-button>
 	  <div class="spacer"></div>
 	  <paper-button class="small-text link form-row">I already have an account. <strong>Sign In</strong></paper-button>
     </core-card>
