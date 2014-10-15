@@ -6,7 +6,7 @@
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-shadow/paper-shadow.html">
 
-<polymer-element name="sign-up-form" noscript layout horizontal>
+<polymer-element name="sign-up-form" noscript layout horizontal reverse wrap>
 
   <template>
     <style>
@@ -14,6 +14,12 @@
 	    margin: 0px 1.2em 0px 0px;
 	  }
 
+	  ul.marketing {
+	    min-width: 320px;
+	    box-sizing: border-box;
+	    padding-left: 20%;
+	  }
+	  
 	  .marketing-heading {
 	    font-size: 1.1em;
 	    color: white;
@@ -25,6 +31,20 @@
 	  
     </style>
 	<core-style ref="signInForm"></core-style>
+    <core-card class="sso-card" id="core-card" vertical layout>
+	  <paper-shadow z="2"></paper-shadow>
+	  <h1 id="heading">Create Account</h1>
+	  <paper-input error="We'd like to know you on a first-name basis." required label="First Name" willvalidate id="first-name-input" layout vertical></paper-input>
+	  <paper-input error="What did you say your last name was again?" required label="Last Name" willvalidate id="last-name-input" layout vertical></paper-input>
+      <paper-input error="Whoa buddy, this doesn't look like an email address." label="Email" required type="email" id="email-input" layout vertical></paper-input>
+      <paper-input error="Your password must be at least 8 characters long, and contain uppercase, lowercase and special characters" label="Password" required pattern="^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$" id="passw-input" layout vertical type="password"></paper-input>
+	  <span layout horizontal class="form-row">
+		<paper-checkbox class="form-row" label="" required id="consent-checkbox" start></paper-checkbox>
+		<div>I am 13 years of age or older and accept the <paper-button class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.</div>
+	  </span>
+	  <paper-button label="Sign up" id="sign-up-button" class="form-row"></paper-button>
+	  <a href="/#sign-in" class="small-text link form-row" center-text>I already have an account. <strong>Sign In</strong></a>
+    </core-card>
 
 	<ul class="marketing" center-text>
 	  <li>
@@ -41,20 +61,6 @@
 	  </li>
 	</ul>
 	
-    <core-card class="sso-card" id="core-card" vertical layout>
-	  <paper-shadow z="2"></paper-shadow>
-	  <h1 id="heading">Create Account</h1>
-	  <paper-input error="We'd like to know you on a first-name basis." required label="First Name" willvalidate id="first-name-input" layout vertical></paper-input>
-	  <paper-input error="What did you say your last name was again?" required label="Last Name" willvalidate id="last-name-input" layout vertical></paper-input>
-      <paper-input error="Whoa buddy, this doesn't look like an email address." label="Email" required type="email" id="email-input" layout vertical></paper-input>
-      <paper-input error="Your password must be at least 8 characters long, and contain uppercase, lowercase and special characters" label="Password" required pattern="^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$" id="passw-input" layout vertical type="password"></paper-input>
-	  <span layout horizontal class="form-row">
-		<paper-checkbox class="form-row" label="" required id="consent-checkbox" start></paper-checkbox>
-		<div>I am 13 years of age or older and accept the <paper-button class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.</div>
-	  </span>
-	  <paper-button label="Sign up" id="sign-up-button" class="form-row"></paper-button>
-	  <a href="/#sign-in" class="small-text link form-row" center-text>I already have an account. <strong>Sign In</strong></a>
-    </core-card>
   </template>
 
 </polymer-element>
