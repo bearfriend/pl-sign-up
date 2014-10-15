@@ -71,7 +71,7 @@
 	},
 	  checkError: function(e) {
 	
-	    if (!e.target.checkValidity() && e.target.value == '') {
+	    if (!e.target.checkValidity() && e.target.inputValue == '') {
 	      e.target.shadowRoot.querySelector('.error-text').innerText = 'This is a required field.';
 	      e.stopPropagation();
 	    }
