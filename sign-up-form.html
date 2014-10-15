@@ -35,10 +35,10 @@
     <core-card class="sso-card" id="core-card" vertical layout flex>
 	  <paper-shadow z="2"></paper-shadow>
 	  <h1 id="heading">Create Account</h1>
-	  <paper-input error="We'd like to know you on a first-name basis." required label="First Name" willvalidate id="first-name-input" layout vertical></paper-input>
-	  <paper-input error="What did you say your last name was again?" required label="Last Name" willvalidate id="last-name-input" layout vertical></paper-input>
-      <paper-input error="Whoa buddy, this doesn't look like an email address." label="Email" required type="email" id="email-input" layout vertical on-input-invalid="{{checkError}}"></paper-input>
-      <paper-input error="Your password must be at least 8 characters long, and contain uppercase, lowercase and special characters" label="Password" required pattern="^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$" id="passw-input" layout vertical type="password"></paper-input>
+	  <paper-input validateImmediately=false error="We'd like to know you on a first-name basis." required label="First Name" willvalidate id="first-name-input" layout vertical></paper-input>
+	  <paper-input validateImmediately=false error="What did you say your last name was again?" required label="Last Name" willvalidate id="last-name-input" layout vertical></paper-input>
+      <paper-input validateImmediately=false error="Whoa buddy, this doesn't look like an email address." label="Email" required type="email" id="email-input" layout vertical on-input-invalid="{{checkError}}" on-change="{{checkValidity}}"></paper-input>
+      <paper-input validateImmediately=false error="Your password must be at least 8 characters long, and contain uppercase, lowercase and special characters" label="Password" required pattern="^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$" id="passw-input" layout vertical type="password"></paper-input>
 	  <span layout horizontal class="form-row">
 		<paper-checkbox class="form-row" label="" required id="consent-checkbox" start></paper-checkbox>
 		<div>I am 13 years of age or older and accept the <paper-button class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.</div>
@@ -66,9 +66,12 @@
 
   <script>
 	Polymer('sign-up-form',{
+	  checkValidity: function(e) {
+	    e.target.setAttribute('validateImmediately',true);
+	},
 	  checkError: function(e) {
-	    if (this.value == '') {
-	      this.$['email-input'].shadowRoot.querySelector('.error-text');
+	    if (e.target.value == '') {
+	      e.target.shadowRoot.querySelector('.error-text').innerText = 'This is a required field.';
 	      e.stopPropagation();
 	    }
 	    else {
