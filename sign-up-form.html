@@ -67,16 +67,17 @@
   <script>
 	Polymer('sign-up-form',{
 	  checkValidity: function(e) {
+	    e.target.checkValidity();
 	    e.target.setAttribute('validateImmediately',true);
 	},
 	  checkError: function(e) {
 	
-	    if (!e.target.checkValidity() && e.target.inputValue == '') {
+	    if (e.target.classList.contains('invalid') && e.target.inputValue == '') {
 	      e.target.shadowRoot.querySelector('.error-text').innerText = 'This is a required field.';
-	      e.stopPropagation();
+	      //e.stopPropagation();
 	    }
 	    else {
-	      
+	      e.target.shadowRoot.querySelector('.error-text').innerText = e.target.error;
 	    }
 	  }
 	});
