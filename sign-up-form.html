@@ -6,10 +6,10 @@
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-shadow/paper-shadow.html">
 
-<polymer-element name="sign-up-form" layout horizontal reverse wrap>
+<polymer-element name="sign-up-form" layout horizontal reverse wrap attributes="marketing">
 
   <template>
-    <style>
+    <style>	  
 	  #consent-checkbox {
 	    margin: 0px 1.2em 0px 0px;
 	  }
@@ -47,25 +47,27 @@
 	  <a href="/#sign-in" class="small-text link form-row" center-text>I already have an account. <strong>Sign In</strong></a>
     </core-card>
 
-	<ul class="marketing" center-text flex self-start>
-	  <li>
-		<h1 class="marketing-heading" style="font-size: 1.1em">Your modern digital reader -<br />intuitive & interactive.</h1>
-		<p class="marketing-text">Make-up course work as you go,<br />in the style that you want.</p>
-	  </li>
-	  <li>
-		<h1 class="marketing-heading" style="font-size: 1.1em">Your modern digital reader -<br />intuitive & interactive.</h1>
-		<p class="marketing-text">Make-up course work as you go,<br />in the style that you want.</p>
-	  </li>
-	  <li>
-		<h1 class="marketing-heading" style="font-size: 1.1em">Your modern digital reader -<br />intuitive & interactive.</h1>
-		<p class="marketing-text">Make-up course work as you go,<br />in the style that you want.</p>
-	  </li>
-	</ul>
-	
+	<template bind if="{{ marketing }}">
+	  <ul class="marketing" center-text flex self-start>
+		<li>
+		  <h1 class="marketing-heading" style="font-size: 1.1em">Your modern digital reader -<br />intuitive & interactive.</h1>
+		  <p class="marketing-text">Make-up course work as you go,<br />in the style that you want.</p>
+		</li>
+		<li>
+		  <h1 class="marketing-heading" style="font-size: 1.1em">Your modern digital reader -<br />intuitive & interactive.</h1>
+		  <p class="marketing-text">Make-up course work as you go,<br />in the style that you want.</p>
+		</li>
+		<li>
+		  <h1 class="marketing-heading" style="font-size: 1.1em">Your modern digital reader -<br />intuitive & interactive.</h1>
+		  <p class="marketing-text">Make-up course work as you go,<br />in the style that you want.</p>
+		</li>
+	  </ul>
+	</template>
   </template>
 
   <script>
 	Polymer('sign-up-form',{
+	  marketing: false,
 	  checkValidity: function(e) {
 	    e.target.checkValidity();
 	    e.target.setAttribute('validateImmediately',true);
