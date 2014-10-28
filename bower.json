@@ -1,26 +1,26 @@
 {
   "name": "sign-up-form",
   "version": "0.0.0",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
   "authors": [
-    "Danny Gleckler <daniel.gleckler@desire2learn.com>"
+    "Danny Gleckler <daniel.gleckler@d2l.com>"
   ],
   "description": "A Polymer component used for Binder/Brightspace sign-up.",
-  "main": "designer.html",
-  "license": "n/a",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "main": "sign-up-form.html",
   "dependencies": {
-    "paper-input": "Polymer/paper-input#~0.4.2",
-    "core-icons": "Polymer/core-icons#~0.4.2",
+    "polymer": "Polymer/polymer#^0.4.2",
+    "pl-input": "https://github.com/bearfriend/pl-input.git",
     "paper-button": "Polymer/paper-button#~0.4.2",
     "paper-checkbox": "Polymer/paper-checkbox#~0.4.2",
-    "paper-icon-button": "Polymer/paper-icon-button#~0.4.2",
-    "paper-shadow": "Polymer/paper-shadow#~0.4.2"
+    "paper-shadow": "Polymer/paper-shadow#~0.4.2",
+    "core-style": "Polymer/core-style#~0.4.2",
+    "pl-config": "https://github.com/bearfriend/pl-config.git"
+  },
+  "devDependencies": {
+    "polymer-test-tools": "Polymer/polymer-test-tools#^0.4.0"
   }
 }

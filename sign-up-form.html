@@ -1,83 +1,44 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../core-icons/core-icons.html">
-<link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../pl-input/pl-input.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-shadow/paper-shadow.html">
+<link rel="import" href="../core-style/core-style.html">
 
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+    <sign-up-form></sign-up-form>
+
+@element sign-up-form
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://polymerlabs.github.io/sign-up-form
+-->
 <polymer-element name="sign-up-form" layout horizontal reverse wrap around-justified attributes="marketing">
 
   <template>
-    <style>	  
-	  #consent-checkbox {
-	    margin: 0px 1.2em 0px 0px;
-	  }
 
-	  @media (min-width: 688px) {
+    <link rel="stylesheet" href="sign-up-form.css" />
 
-	    :host[marketing] {
-	      margin-right: 1em;
-	    }
-	  
-	  }
-	  
-	  ul.marketing {
-	    position: relative;
-	    box-sizing: border-box;
-  	    list-style: none;
-	    padding: 0;
-	    margin:0px 1em;
-	    width: 100%;
-	    min-width: 320px;
-	    max-width: 430px;
-	  }
-
-	  ul.marketing li {
-	    position: relative;
-	    margin-left: 25%;
-	    margin-right: 5%;
-	  }
-	  
-	  ul.marketing li::before {
-        content: "";
-	    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAlIDEwMCUiPiAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMCIgZmlsbD0icmVkIiAvPiAgU29ycnksIHlvdXIgYnJvd3NlciBkb2VzIG5vdCBzdXBwb3J0IGlubGluZSBTVkcuICA8L3N2Zz4=);
-	    width: 25%;
-	    padding-top: 25%;
-	    background-size: contain;
-	    display: inline-block;
-	    position: absolute;
-	    left: -30%;
-	    top: 0%;
-	    height: 0px;
-	  }
-	  
-	  .marketing-heading {
-	    font-size: 1.1em;
-	    color: white;
-	  }
-
-	  .marketing-text {
-	    color: #CE9EB8;
-	  }
-	  
-    </style>
 	<core-style ref="signInForm"></core-style>
-    <core-card class="sso-card" id="core-card" vertical layout flex self-start>
+	<core-card class="sso-card" id="core-card" vertical layout flex self-start>
 	  <paper-shadow z="2"></paper-shadow>
 	  <h1 id="heading">Create Account</h1>
-	  <paper-input validateImmediately=false required="We'd like to know you on a first-name basis." label="First Name" willvalidate id="first-name-input" layout vertical></paper-input>
-	  <paper-input validateImmediately=false required="What did you say your last name was again?" label="Last Name" willvalidate id="last-name-input" layout vertical></paper-input>
-      <paper-input validateImmediately=false required="An email address is required to sign up" error="Whoa buddy, this doesn't look like an email address." label="Email" type="email" id="email-input" layout vertical on-input="{{checkError}}" on-change="{{checkValidity}}"></paper-input>
-      <paper-input validateImmediately=false required="A password is required to sign up" error="Your password must be at least 8 characters long, and contain uppercase, lowercase and special characters" label="Password" pattern="^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$" id="passw-input" layout vertical type="password"></paper-input>
+	  <pl-input required="We'd like to know you on a first-name basis." label="First Name" id="first-name-input"></pl-input>
+	  <pl-input required="What did you say your last name was again?" label="Last Name" id="last-name-input"></pl-input>
+	  <pl-input required="An email address is required to sign up" error="Whoa buddy, this doesn't look like an email address." label="Email" type="email" id="email-input"></pl-input>
+	  <pl-input required="A password is required to sign up" error="Your password must be at least 8 characters long, and contain uppercase, lowercase and special characters" label="Password" pattern="^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$" id="passw-input" type="password"></pl-input>
 	  <span layout horizontal class="form-row">
 		<paper-checkbox class="form-row" label="" required id="consent-checkbox" start></paper-checkbox>
 		<div>I am 13 years of age or older and accept the <paper-button class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.</div>
 	  </span>
 	  <paper-button label="Sign up" id="sign-up-button" class="form-row"></paper-button>
 	  <a href="/#sign-in" class="small-text link form-row" center-text>I already have an account. <strong>Sign In</strong></a>
-    </core-card>
-
+	</core-card>
+	
 	<template bind if="{{ marketing }}">
 	  <ul class="marketing" center-text flex self-start>
 		<li>
@@ -93,26 +54,41 @@
 		  <p class="marketing-text">Make-up course work as you go,<br />in the style that you want.</p>
 		</li>
 	  </ul>
+	  
 	</template>
-  </template>
-
-  <script>
-	Polymer('sign-up-form',{
-	  marketing: false,
-	  checkValidity: function(e) {
-	    e.target.checkValidity();
-	    e.target.setAttribute('validateImmediately',true);
-	},
-	  checkError: function(e) {
 	
-	    if (e.target.classList.contains('invalid') && e.target.inputValue == '') {
-	      e.target.shadowRoot.querySelector('.error-text').innerText = e.target.required;
-	    }
-	    else {
-	      e.target.shadowRoot.querySelector('.error-text').innerText = e.target.error;
-	    }
-	  }
-	});
+  </template>
+	
+  <script>
+	
+    Polymer({
+	
+	  /**
+       * The `marketing` attribute determines whether or not to show marketing material as part of your `<sign-up-form>`
+       *
+       * @attribute marketing
+       * @type boolean
+       * @default false
+       */
+	  marketing: false,
+	
+      /**
+       * The `author` attribute sets an initial author
+       *
+       * @attribute author
+       * @type string
+       * @default 'Daniel Gleckler'
+       */
+      author: 'Daniel Gleckler',
+
+      ready: function() {
+        // Ready is a lifecycle callback.
+        // You can do setup work in here.
+        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
+      }
+
+    });
+
   </script>
-  
+
 </polymer-element>
