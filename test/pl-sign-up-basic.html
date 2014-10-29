@@ -2,35 +2,35 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <title>sign-up-form</title>
+  <title>pl-sign-up</title>
 
   <script src="../../platform/platform.js"></script>
   <link rel="import" href="../../polymer-test-tools/tools.html">
   <script src="../../polymer-test-tools/htmltest.js"></script>
 
   <!-- Step 1: import the element to test -->
-  <link rel="import" href="../sign-up-form.html">
+  <link rel="import" href="../pl-sign-up.html">
 
 </head>
 <body>
 
-  <sign-up-form></sign-up-form>
+  <pl-sign-up></pl-sign-up>
 
   <script>
 
     document.addEventListener('polymer-ready', function() {
       // Test a property
-      var myEl = document.querySelector('sign-up-form');
+      var myEl = document.querySelector('pl-sign-up');
       assert.equal(myEl.author, 'Dimitri Glazkov');
 
       // Test a method
       var hello = myEl.sayHello();
-      assert.equal(hello, 'sign-up-form says, Hello World!');
+      assert.equal(hello, 'pl-sign-up says, Hello World!');
       var greetings = myEl.sayHello('greetings Earthlings');
-      assert.equal(greetings, 'sign-up-form says, greetings Earthlings');
+      assert.equal(greetings, 'pl-sign-up says, greetings Earthlings');
 
       // Test an event
-      myEl.addEventListener('sign-up-form-lasers-success', function(event) {
+      myEl.addEventListener('pl-sign-up-lasers-success', function(event) {
         assert.equal(event.detail.sound, 'Pew pew pew!');
         // IMPORTANT:
         // Make sure to call done() at the end of every test suite!

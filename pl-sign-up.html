@@ -10,18 +10,18 @@ Element providing solution to no problem in particular.
 
 ##### Example
 
-    <sign-up-form></sign-up-form>
+    <pl-sign-up></pl-sign-up>
 
-@element sign-up-form
+@element pl-sign-up
 @blurb Element providing solution to no problem in particular.
 @status alpha
-@homepage http://polymerlabs.github.io/sign-up-form
+@homepage http://polymerlabs.github.io/pl-sign-up
 -->
-<polymer-element name="sign-up-form" layout horizontal reverse wrap around-justified attributes="marketing">
+<polymer-element name="pl-sign-up" layout horizontal reverse wrap around-justified attributes="marketing">
 
   <template>
 
-    <link rel="stylesheet" href="sign-up-form.css" />
+    <link rel="stylesheet" href="pl-sign-up.css" />
 
 	<core-style ref="signInForm"></core-style>
 	<core-card class="sso-card" id="core-card" vertical layout flex self-start>
@@ -64,7 +64,7 @@ Element providing solution to no problem in particular.
     Polymer({
 	
 	  /**
-       * The `marketing` attribute determines whether or not to show marketing material as part of your `<sign-up-form>`
+       * The `marketing` attribute determines whether or not to show marketing material as part of your `<pl-sign-up>`
        *
        * @attribute marketing
        * @type boolean
