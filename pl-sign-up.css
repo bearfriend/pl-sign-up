@@ -1,9 +1,21 @@
+:host {
+  display: block;
+  width: 450px;
+}
+
 @media (min-width: 688px) {
 
-	:host[marketing] {
+  :host[marketing] {
 		margin-right: 1em;
 	}
 
+}
+
+@media (min-width: 925px) {
+
+  :host {
+  width: 900px;
+  }
 }
 
 #consent-checkbox {
@@ -15,7 +27,7 @@ ul.marketing {
 	box-sizing: border-box;
 	list-style: none;
 	padding: 0;
-	margin:0px 1em;
+	margin:50px 1em;
 	width: 100%;
 	min-width: 320px;
 	max-width: 430px;
