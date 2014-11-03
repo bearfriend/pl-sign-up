@@ -52,6 +52,18 @@ ul.marketing li::before {
 	height: 0px;
 }
 
+ul.marketing li#vp1::before {
+background-image: url("images/highlight_icon.png");
+  }
+
+ul.marketing li#vp2::before {
+background-image: url("images/collection_icon.png");
+  }
+
+ul.marketing li#vp3::before {
+background-image: url("images/download_icon.png");
+  }
+
 .marketing-heading {
 	font-size: 1.1em;
 	color: white;
