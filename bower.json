@@ -18,8 +18,7 @@
     "paper-checkbox": "Polymer/paper-checkbox#~0.4.2",
     "paper-shadow": "Polymer/paper-shadow#~0.4.2",
     "core-style": "Polymer/core-style#~0.4.2",
-	"core-ajax": "Polymer/core-ajax#~0.4.2",
-    "pl-config": "https://github.com/bearfriend/pl-config.git"
+	"core-ajax": "Polymer/core-ajax#~0.4.2"
   },
   "devDependencies": {
     "polymer-test-tools": "Polymer/polymer-test-tools#^0.4.0"
