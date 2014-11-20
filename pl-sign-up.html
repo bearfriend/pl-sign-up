@@ -5,6 +5,8 @@
 <link rel="import" href="../paper-shadow/paper-shadow.html">
 <link rel="import" href="../core-style/core-style.html">
 <link rel="import" href="../core-ajax/core-ajax.html">
+<link rel="import" href="../core-a11y-keys/core-a11y-keys.html">
+
 
 <!--
 Element providing solution to no problem in particular.
@@ -30,7 +32,7 @@ Element providing solution to no problem in particular.
 	<core-card class="sso-card" id="core-card" vertical layout flex self-start>
 	  <paper-shadow z="2"></paper-shadow>
 	  <h1 id="heading">Create Account</h1>
-	  <pl-input value="{{ params.firstName }}"required="We'd like to know you on a first-name basis." label="First Name" id="first-name-input"></pl-input>
+	  <pl-input autofocus value="{{ params.firstName }}"required="We'd like to know you on a first-name basis." label="First Name" id="first-name-input"></pl-input>
 	  <pl-input value="{{ params.lastName }}"required="What did you say your last name was again?" label="Last Name" id="last-name-input"></pl-input>
 	  <pl-input value="{{ params.email }}"required="An email address is required to sign up" error="Whoa buddy, this doesn't look like an email address." label="Email" type="email" id="email-input"></pl-input>
 	  <pl-input value="{{ params.password }}"required="A password is required to sign up" error="Your password must be at least 8 characters long, and contain uppercase, lowercase and special characters" label="Password" type="password" pattern=".{8,}" id="passw-input" type="password"></pl-input>
@@ -38,7 +40,9 @@ Element providing solution to no problem in particular.
 		<paper-checkbox value="{{ params.agree }}" class="form-row" label="" required id="consent-checkbox" start></paper-checkbox>
 		<div>I am 13 years of age or older and accept the <paper-button class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.</div>
 	  </span>
-	  <paper-button label="Sign up" id="sign-up-button" class="form-row" on-click="{{ signUp }}"></paper-button>
+	  <paper-button label="Sign up" id="sign-up-button" class="form-row" on-click="{{ signUp }}" onfocus="console.log('focus');">
+		<core-a11y-keys target="{{}}" keys="enter space" on-keys-pressed="{{ signUp }}"></core-a11y-keys>
+	  </paper-button>
 	  <a href="/#sign-in" class="small-text link form-row" center-text>I already have an account. <strong>Sign In</strong></a>
 	</core-card>
 	
@@ -112,6 +116,7 @@ Element providing solution to no problem in particular.
 	  signUpSuccess: function() {
 		alert('One more step. Check your email for a confirmation link. (or paste the confirmation code here... once I\'ve built it.)');
 	  }
+						 
 
     });
 
