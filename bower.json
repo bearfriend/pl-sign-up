@@ -12,15 +12,15 @@
   "description": "A Polymer component used for Binder/Brightspace sign-up.",
   "main": "pl-sign-up.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.4.2",
+    "polymer": "Polymer/polymer#^0.5.1",
     "pl-input": "https://github.com/bearfriend/pl-input.git",
-    "paper-button": "Polymer/paper-button#~0.4.2",
-    "paper-checkbox": "Polymer/paper-checkbox#~0.4.2",
-    "paper-shadow": "Polymer/paper-shadow#~0.4.2",
-    "core-style": "Polymer/core-style#~0.4.2",
-	"core-ajax": "Polymer/core-ajax#~0.4.2"
+    "paper-button": "Polymer/paper-button#~0.5.1",
+    "paper-checkbox": "Polymer/paper-checkbox#~0.5.1",
+    "paper-shadow": "Polymer/paper-shadow#~0.5.1",
+    "core-style": "Polymer/core-style#~0.5.1",
+	"core-ajax": "Polymer/core-ajax#~0.5.1"
   },
   "devDependencies": {
-    "polymer-test-tools": "Polymer/polymer-test-tools#^0.4.0"
+    "polymer-test-tools": "Polymer/polymer-test-tools#^0.5.1"
   }
 }
