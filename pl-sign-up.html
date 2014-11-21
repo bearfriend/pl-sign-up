@@ -26,7 +26,13 @@ Element providing solution to no problem in particular.
 
     <link rel="stylesheet" href="pl-sign-up.css" />
 
-	<core-ajax id="ajax" method="POST" auto url="{{ userCreateUrl }}" params="{{ params }}" handleAs="json" on-core-response="{{ signUpSuccess }}" withCredentials></core-ajax>
+	<core-ajax id="ajax"
+			   method="POST"
+			   url="{{ userCreateUrl }}"
+			   params="{{ params }}"
+			   handleAs="json"
+			   on-core-response="{{ signUpSuccess }}"
+			   withCredentials></core-ajax>
 	
 	<core-style ref="signInForm"></core-style>
 	<core-card class="sso-card" id="core-card" vertical layout flex self-start>
@@ -38,11 +44,10 @@ Element providing solution to no problem in particular.
 	  <pl-input value="{{ params.password }}"required="A password is required to sign up" error="Your password must be at least 8 characters long, and contain uppercase, lowercase and special characters" label="Password" type="password" pattern=".{8,}" id="passw-input" type="password"></pl-input>
 	  <span layout horizontal class="form-row">
 		<paper-checkbox value="{{ params.agree }}" class="form-row" label="" required id="consent-checkbox" start></paper-checkbox>
-		<div>I am 13 years of age or older and accept the <paper-button class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.</div>
+		<div>I am 13 years of age or older and accept the <paper-button id="test" class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.</div>
 	  </span>
-	  <paper-button label="Sign up" id="sign-up-button" class="form-row" on-click="{{ signUp }}" onfocus="console.log('focus');">
-		<core-a11y-keys target="{{}}" keys="enter space" on-keys-pressed="{{ signUp }}"></core-a11y-keys>
-	  </paper-button>
+	  <paper-button id="sign-up-button" class="form-row" on-click="{{ signUp }}" onfocus="console.log('focus');">Sign Up</paper-button>
+	  <core-a11y-keys target="{{ $['sign-up-button'] }}" keys="enter space" on-keys-pressed="{{ signUp }}"></core-a11y-keys>
 	  <a href="/#sign-in" class="small-text link form-row" center-text>I already have an account. <strong>Sign In</strong></a>
 	</core-card>
 	
