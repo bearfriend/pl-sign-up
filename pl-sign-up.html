@@ -1,12 +1,13 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../pl-input/pl-input.html">
+<link rel="import" href="../pl-input-decorator/pl-input-decorator.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-shadow/paper-shadow.html">
+<link rel="import" href="../paper-toast/paper-toast.html">
 <link rel="import" href="../core-style/core-style.html">
 <link rel="import" href="../core-ajax/core-ajax.html">
 <link rel="import" href="../core-a11y-keys/core-a11y-keys.html">
-
+<link rel="import" href="../core-overlay/core-overlay.html" />
 
 <!--
 Element providing solution to no problem in particular.
@@ -20,7 +21,7 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://polymerlabs.github.io/pl-sign-up
 -->
-<polymer-element name="pl-sign-up" layout horizontal reverse wrap around-justified attributes="marketing">
+<polymer-element name="pl-sign-up" layout horizontal reverse wrap around-justified attributes="marketing" on-input="{{ change }}" on-decorator-invalid="{{ decoratorInvalid }}">
 
   <template>
 
@@ -31,6 +32,7 @@ Element providing solution to no problem in particular.
 			   url="{{ userCreateUrl }}"
 			   params="{{ params }}"
 			   handleAs="json"
+			   on-core-error="{{ signUpFailure }}"
 			   on-core-response="{{ signUpSuccess }}"
 			   withCredentials></core-ajax>
 	
@@ -38,13 +40,21 @@ Element providing solution to no problem in particular.
 	<core-card class="sso-card" id="core-card" vertical layout flex self-start>
 	  <paper-shadow z="2"></paper-shadow>
 	  <h1 id="heading">Create Account</h1>
-	  <pl-input autofocus value="{{ params.firstName }}"required="We'd like to know you on a first-name basis." label="First Name" id="first-name-input"></pl-input>
-	  <pl-input value="{{ params.lastName }}"required="What did you say your last name was again?" label="Last Name" id="last-name-input"></pl-input>
-	  <pl-input value="{{ params.email }}"required="An email address is required to sign up" error="Whoa buddy, this doesn't look like an email address." label="Email" type="email" id="email-input"></pl-input>
-	  <pl-input value="{{ params.password }}"required="A password is required to sign up" error="Your password must be at least 8 characters long, and contain uppercase, lowercase and special characters" label="Password" type="password" pattern=".{8,}" id="passw-input" type="password"></pl-input>
+	  <pl-input-decorator autofocus required="We'd like to know you on a first-name basis." label="First Name">
+		<input id="first-name-input" value="{{ params.firstName }}" />
+	  </pl-input-decorator>
+	  <pl-input-decorator required="What did you say your last name was again?" label="Last Name">
+		<input id="last-name-input" value="{{ params.lastName }}" />
+	  </pl-input-decorator>
+	  <pl-input-decorator required="An email address is required to sign up" error="Whoa buddy, this doesn't look like an email address." label="Email">
+		<input id="email-input" type="email" value="{{ params.email }}" />
+	  </pl-input-decorator>
+	  <pl-input-decorator required="A password is required to sign up" error="Your password must be at least 8 characters long" label="Password" type="password">
+		<input id="passw-input" type="password" value="{{ params.password }}" pattern=".{8,}" />
+	  </pl-input-decorator>
 	  <span layout horizontal class="form-row">
-		<paper-checkbox value="{{ params.agree }}" class="form-row" label="" required id="consent-checkbox" start></paper-checkbox>
-		<div>I am 13 years of age or older and accept the <paper-button id="test" class="link">Service Agreement</paper-button> and <paper-button class="link">Privacy Policy</paper-button>.</div>
+		<paper-checkbox class="form-row" label="" required id="agree-checkbox" on-core-change="{{ agreeChanged }}" start required></paper-checkbox>
+		<div>I am 13 years of age or older and accept the <paper-button class="link" on-tap="{{ showTerms }}">Service Agreement</paper-button> and <paper-button class="link" on-tap="{{ showPolicy }}">Privacy Policy</paper-button>.</div>
 	  </span>
 	  <paper-button id="sign-up-button" class="form-row" on-click="{{ signUp }}" onfocus="console.log('focus');">Sign Up</paper-button>
 	  <core-a11y-keys target="{{ $['sign-up-button'] }}" keys="enter space" on-keys-pressed="{{ signUp }}"></core-a11y-keys>
@@ -69,11 +79,31 @@ Element providing solution to no problem in particular.
 
 	</template>
 
+	<core-overlay class="pl-signup-overlay" id="terms-overlay" backdrop layered closeattribute="close">
+	  <paper-button class="link" close>Close</paper-button>
+	  Terms of Service
+	</core-overlay>
+
+	<core-overlay class="pl-account-overlay" id="policy-overlay" backdrop layered closeattribute="close">
+	  <paper-button class="link" close>Close</paper-button>
+	  Privacy Policy
+	</core-overlay>
+
+	<core-overlay class="pl-account-overlay" id="success-overlay" backdrop layered closeattribute="close">
+	  <paper-button class="link" close>Close</paper-button>
+	  <div class="content"></div>
+	</core-overlay>
+
+	<paper-toast id="toast"></paper-toast>
+	
+	
+	
   </template>
 
   <script>
 
     Polymer({
+	  
 	  /**
        * The `marketing` attribute determines whether or not to show marketing material as part of your `<pl-sign-up>`
        *
@@ -108,18 +138,86 @@ Element providing solution to no problem in particular.
 		}
       },
 
-	  signUp: function() {
+	  change: function() {
 		
-		var ajax = this.$.ajax;
-		ajax.go();
-
+		if (this.shadowRoot.querySelectorAll('pl-input-decorator.invalid').length || !this.$['agree-checkbox'].checked) {
+		  this.valid = false;
+		}
+		else {
+		  this.valid = true;
+		}
 		
 	  },
 
+	  validate: function() {
+		this.shadowRoot.querySelectorAll('pl-input-decorator').array()
+					   .forEach(
+						 function(input) {
+						   input.validation = true;
+						   input.startValidation();
+						 });
+
+		if (!this.$['agree-checkbox'].checked) {
+		  this.$['agree-checkbox'].classList.add('invalid');
+		}
+		
+		this.change();
+		
+	  },
+	  
+	  signUp: function() {
+		
+		this.validate();
+
+		var that = this;
+		
+		// get in line - validation is event-based
+		setTimeout(function() {
+
+		  that.change();
+		  
+		  if (that.valid) {
+			that.$.ajax.go();
+		  }
+		},0);
+		
+		
+	  },
+
+	  valid: false,
+	  
 	  userCreateUrl: 'http://54.84.119.67:1337/api/users/register', // this should be retrieved (http://54.84.119.67:1337/api/discovery/users/create/links/api), not hard-coded
 	  
-	  signUpSuccess: function() {
-		alert('One more step. Check your email for a confirmation link. (or paste the confirmation code here... once I\'ve built it.)');
+	  signUpSuccess: function(response) {
+		this.$['success-overlay'].querySelector('.content').innerText = response.message || 'Success! Check your email for a confirmation link';
+		this.$['success-overlay'].open();
+	  },
+
+	  signUpFailure: function(response) {
+		this.$.toast.text = response.message || 'Whoops, looks like we\'re having trouble creating your account. Try again in a few minutes.'; // TODO: align this with actual server response message
+		//this.$.toast.open();
+		this.$.toast.opened = true;
+	  },
+
+	  // TODO: create a pl-checkbox with this functionality
+	  agreeChanged: function(e,detal,el) {
+		if (el.checked || !el.hasAttribute('required')) {
+		  el.classList.remove('invalid');
+		}
+		
+		this.change();
+	  },
+
+	  decoratorInvalid: function(e,detail,el) {
+		console.log(detail.error);
+	  },
+
+	  showTerms: function() {
+		this.$['terms-overlay'].open();
+	  },
+
+	  showPolicy: function() {
+		this.$['policy-overlay'].open();
 	  }
 						 
 

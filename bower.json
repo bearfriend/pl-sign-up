@@ -13,7 +13,7 @@
   "main": "pl-sign-up.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^0.5.1",
-    "pl-input": "https://github.com/bearfriend/pl-input.git",
+    "pl-input-decorator": "https://github.com/bearfriend/pl-input-decorator.git",
     "paper-button": "Polymer/paper-button#~0.5.1",
     "paper-checkbox": "Polymer/paper-checkbox#~0.5.1",
     "paper-shadow": "Polymer/paper-shadow#~0.5.1",
