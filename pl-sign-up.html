@@ -21,12 +21,23 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://polymerlabs.github.io/pl-sign-up
 -->
+
+<style>
+  html /deep/ .pl-signup-overlay {
+	max-width: 1200px;
+ }
+ 
+ html /deep/ .pl-signup-overlay p {
+   white-space: pre-wrap;
+ }
+</style>
+
 <polymer-element name="pl-sign-up" layout horizontal reverse wrap around-justified attributes="marketing" on-input="{{ change }}" on-decorator-invalid="{{ decoratorInvalid }}">
-
-  <template>
-
-    <link rel="stylesheet" href="pl-sign-up.css" />
-
+  
+  <template>  
+	
+	<link rel="stylesheet" href="pl-sign-up.css" />
+	
 	<core-ajax id="ajax"
 			   method="POST"
 			   url="{{ userCreateUrl }}"
@@ -79,17 +90,57 @@ Element providing solution to no problem in particular.
 
 	</template>
 
-	<core-overlay class="pl-signup-overlay" id="terms-overlay" backdrop layered closeattribute="close">
-	  <paper-button class="link" close>Close</paper-button>
-	  Terms of Service
+	<core-overlay class="pl-signup-overlay" id="terms-overlay" backdrop layered closeattribute="close" layout vertical>
+	  <paper-button class="link" flex self-end close>Close</paper-button>
+	  <p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut vulputate sem, a egestas justo. Vestibulum et lacinia nisi, a aliquet purus. Quisque commodo sagittis ultricies. Aliquam id gravida risus, at porttitor nibh. Nam sed scelerisque tellus. Duis leo libero, molestie at nisi sit amet, pretium luctus libero. Praesent aliquet est vel lacus aliquam, a pulvinar erat commodo. Vestibulum non ex sed ipsum eleifend tincidunt at quis nisl. Aliquam gravida erat at felis pharetra ullamcorper. Vestibulum ullamcorper leo ac vestibulum sagittis. Donec pulvinar maximus nibh, ut tempor libero commodo pellentesque. Mauris id ante eleifend, sagittis quam et, convallis arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut feugiat euismod ipsum vel sodales.
+		
+		Fusce sem nisl, ullamcorper eu euismod et, sollicitudin vitae magna. Fusce vitae tempor augue. Praesent egestas in mi et mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam posuere risus sed purus imperdiet, quis rutrum mi mollis. Phasellus vitae posuere augue. Fusce eleifend ut tortor a congue.
+		
+		Donec nec pretium tellus. Donec molestie ut mi sed placerat. Nulla gravida, erat et aliquam convallis, enim purus sagittis eros, id tincidunt felis est at mi. Donec eget dolor fringilla, semper tellus sit amet, convallis libero. Nunc rhoncus at diam non tristique. Cras tempor diam ut nisl gravida, id auctor tellus viverra. Aliquam lacinia nec nisi eu maximus. Phasellus imperdiet venenatis leo, ac blandit mi ullamcorper ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum congue euismod leo, eu dignissim nisi viverra sit amet. Nunc a consequat lorem. Aenean congue turpis quis ante placerat ullamcorper.
+		
+		Vivamus augue ante, tempor non turpis finibus, auctor posuere neque. Duis eu blandit sem. Aliquam euismod justo ante, et interdum velit pharetra eu. Phasellus justo neque, tempus sit amet erat in, commodo fringilla neque. Curabitur tempus magna nec tortor fermentum, efficitur feugiat lacus consequat. Donec gravida justo maximus malesuada placerat. Cras tincidunt sem at elit fringilla malesuada. Nunc ultrices felis ac ipsum hendrerit condimentum. Vivamus et egestas nunc, in pharetra velit. Vestibulum rutrum metus vel fringilla efficitur. Integer sed ex et ligula tristique iaculis sit amet id turpis. Nullam tristique tincidunt lacinia. Nam suscipit posuere purus nec volutpat. In metus lacus, euismod efficitur suscipit vel, tincidunt vitae ex.
+
+		Fusce ornare, eros eget luctus hendrerit, mauris nulla faucibus nisl, vel efficitur odio ligula eu nibh. Cras diam risus, sollicitudin vitae quam in, accumsan pretium massa. Nam at dolor ac sem tempus interdum. Pellentesque in elit nec tellus efficitur varius ut a sapien. Duis consectetur at eros ut rutrum. Sed mattis porttitor mauris at mollis. Sed faucibus, urna non egestas rutrum, tellus urna consequat orci, in dictum leo orci nec metus. Morbi erat risus, luctus et lectus et, fringilla porta dolor. Nunc fermentum purus non bibendum ornare. Praesent laoreet congue volutpat. Suspendisse interdum mauris at quam pharetra, in varius neque eleifend. Nullam placerat odio mi, et interdum turpis volutpat eget.
+
+		Nulla imperdiet lorem id ante scelerisque pellentesque. Sed ultrices ac tortor quis varius. Curabitur condimentum lectus ante, a sollicitudin enim aliquam a. Duis eget felis sit amet sem porta iaculis. Donec eleifend mi dolor, sed pharetra justo porttitor a. Curabitur et elit lacus. Nunc varius tempus mollis. Phasellus ac quam lacus. Quisque vel sollicitudin risus, sit amet imperdiet lectus. Praesent justo mi, aliquam sed vehicula at, sodales non nulla. Suspendisse ultricies tincidunt enim non feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut malesuada mi eget magna sollicitudin, sed tincidunt diam semper. Pellentesque facilisis ut tortor vitae bibendum. Quisque vehicula fringilla lectus, vitae hendrerit quam lacinia a.
+
+		Pellentesque vulputate tellus venenatis vulputate aliquet. Fusce in enim tincidunt, euismod orci id, viverra nisi. Curabitur pellentesque bibendum orci at fringilla. Aenean ac ornare ex. Quisque mattis magna sapien, sed porta nisi tempus at. Etiam nec pellentesque sapien, congue consequat diam. Nullam feugiat a metus sit amet luctus.
+
+		Ut a quam eu ligula suscipit tempus. Suspendisse fringilla laoreet odio sed tristique. Suspendisse convallis sodales tristique. Nullam id condimentum erat. Aliquam sollicitudin, orci in egestas egestas, diam elit vehicula enim, sed vulputate leo neque vel nunc. Vivamus cursus quam erat, quis tempor augue porttitor nec. Sed eget sollicitudin ante.
+
+		Morbi nunc ex, eleifend id massa nec, ultrices dictum tortor. Ut volutpat ultrices lorem in molestie. Mauris et ligula gravida, tincidunt lectus eu, luctus lectus. Nullam volutpat arcu ullamcorper, porta purus sit amet, imperdiet ex. Nulla posuere tortor tincidunt congue ornare. Praesent tempor mollis libero et congue. Vestibulum eu urna non elit sodales fringilla eget sit amet libero. Curabitur suscipit dignissim leo, at malesuada justo molestie et. Morbi vulputate nulla ut dui sollicitudin, et pharetra neque vehicula. In in semper tellus. In rhoncus placerat erat, non consectetur eros dignissim id. Quisque maximus arcu justo. Pellentesque scelerisque sem nec nisi congue maximus.
+
+		Curabitur aliquet, augue quis viverra molestie, nunc nunc pulvinar nisl, quis sagittis mi ex vel orci. Integer id blandit mauris. Quisque ac sodales mi, vel lacinia mauris. Ut suscipit ligula quis finibus efficitur. Maecenas ante massa, consectetur quis est a, imperdiet convallis nisi. Proin vel tempor risus, eget pellentesque eros. Maecenas ac euismod mi. Duis a elementum turpis. Mauris at mattis augue. In nisi augue, hendrerit vel dui sed, luctus pellentesque enim.
+	  </p>
 	</core-overlay>
 
-	<core-overlay class="pl-account-overlay" id="policy-overlay" backdrop layered closeattribute="close">
-	  <paper-button class="link" close>Close</paper-button>
-	  Privacy Policy
+	<core-overlay class="pl-signup-overlay" id="policy-overlay" backdrop layered closeattribute="close" layout vertical>
+	  <paper-button class="link" flex self-end close>Close</paper-button>
+	  <p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut vulputate sem, a egestas justo. Vestibulum et lacinia nisi, a aliquet purus. Quisque commodo sagittis ultricies. Aliquam id gravida risus, at porttitor nibh. Nam sed scelerisque tellus. Duis leo libero, molestie at nisi sit amet, pretium luctus libero. Praesent aliquet est vel lacus aliquam, a pulvinar erat commodo. Vestibulum non ex sed ipsum eleifend tincidunt at quis nisl. Aliquam gravida erat at felis pharetra ullamcorper. Vestibulum ullamcorper leo ac vestibulum sagittis. Donec pulvinar maximus nibh, ut tempor libero commodo pellentesque. Mauris id ante eleifend, sagittis quam et, convallis arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut feugiat euismod ipsum vel sodales.
+		
+		Fusce sem nisl, ullamcorper eu euismod et, sollicitudin vitae magna. Fusce vitae tempor augue. Praesent egestas in mi et mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam posuere risus sed purus imperdiet, quis rutrum mi mollis. Phasellus vitae posuere augue. Fusce eleifend ut tortor a congue.
+		
+		Donec nec pretium tellus. Donec molestie ut mi sed placerat. Nulla gravida, erat et aliquam convallis, enim purus sagittis eros, id tincidunt felis est at mi. Donec eget dolor fringilla, semper tellus sit amet, convallis libero. Nunc rhoncus at diam non tristique. Cras tempor diam ut nisl gravida, id auctor tellus viverra. Aliquam lacinia nec nisi eu maximus. Phasellus imperdiet venenatis leo, ac blandit mi ullamcorper ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum congue euismod leo, eu dignissim nisi viverra sit amet. Nunc a consequat lorem. Aenean congue turpis quis ante placerat ullamcorper.
+		
+		Vivamus augue ante, tempor non turpis finibus, auctor posuere neque. Duis eu blandit sem. Aliquam euismod justo ante, et interdum velit pharetra eu. Phasellus justo neque, tempus sit amet erat in, commodo fringilla neque. Curabitur tempus magna nec tortor fermentum, efficitur feugiat lacus consequat. Donec gravida justo maximus malesuada placerat. Cras tincidunt sem at elit fringilla malesuada. Nunc ultrices felis ac ipsum hendrerit condimentum. Vivamus et egestas nunc, in pharetra velit. Vestibulum rutrum metus vel fringilla efficitur. Integer sed ex et ligula tristique iaculis sit amet id turpis. Nullam tristique tincidunt lacinia. Nam suscipit posuere purus nec volutpat. In metus lacus, euismod efficitur suscipit vel, tincidunt vitae ex.
+
+		Fusce ornare, eros eget luctus hendrerit, mauris nulla faucibus nisl, vel efficitur odio ligula eu nibh. Cras diam risus, sollicitudin vitae quam in, accumsan pretium massa. Nam at dolor ac sem tempus interdum. Pellentesque in elit nec tellus efficitur varius ut a sapien. Duis consectetur at eros ut rutrum. Sed mattis porttitor mauris at mollis. Sed faucibus, urna non egestas rutrum, tellus urna consequat orci, in dictum leo orci nec metus. Morbi erat risus, luctus et lectus et, fringilla porta dolor. Nunc fermentum purus non bibendum ornare. Praesent laoreet congue volutpat. Suspendisse interdum mauris at quam pharetra, in varius neque eleifend. Nullam placerat odio mi, et interdum turpis volutpat eget.
+
+		Nulla imperdiet lorem id ante scelerisque pellentesque. Sed ultrices ac tortor quis varius. Curabitur condimentum lectus ante, a sollicitudin enim aliquam a. Duis eget felis sit amet sem porta iaculis. Donec eleifend mi dolor, sed pharetra justo porttitor a. Curabitur et elit lacus. Nunc varius tempus mollis. Phasellus ac quam lacus. Quisque vel sollicitudin risus, sit amet imperdiet lectus. Praesent justo mi, aliquam sed vehicula at, sodales non nulla. Suspendisse ultricies tincidunt enim non feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut malesuada mi eget magna sollicitudin, sed tincidunt diam semper. Pellentesque facilisis ut tortor vitae bibendum. Quisque vehicula fringilla lectus, vitae hendrerit quam lacinia a.
+
+		Pellentesque vulputate tellus venenatis vulputate aliquet. Fusce in enim tincidunt, euismod orci id, viverra nisi. Curabitur pellentesque bibendum orci at fringilla. Aenean ac ornare ex. Quisque mattis magna sapien, sed porta nisi tempus at. Etiam nec pellentesque sapien, congue consequat diam. Nullam feugiat a metus sit amet luctus.
+
+		Ut a quam eu ligula suscipit tempus. Suspendisse fringilla laoreet odio sed tristique. Suspendisse convallis sodales tristique. Nullam id condimentum erat. Aliquam sollicitudin, orci in egestas egestas, diam elit vehicula enim, sed vulputate leo neque vel nunc. Vivamus cursus quam erat, quis tempor augue porttitor nec. Sed eget sollicitudin ante.
+
+		Morbi nunc ex, eleifend id massa nec, ultrices dictum tortor. Ut volutpat ultrices lorem in molestie. Mauris et ligula gravida, tincidunt lectus eu, luctus lectus. Nullam volutpat arcu ullamcorper, porta purus sit amet, imperdiet ex. Nulla posuere tortor tincidunt congue ornare. Praesent tempor mollis libero et congue. Vestibulum eu urna non elit sodales fringilla eget sit amet libero. Curabitur suscipit dignissim leo, at malesuada justo molestie et. Morbi vulputate nulla ut dui sollicitudin, et pharetra neque vehicula. In in semper tellus. In rhoncus placerat erat, non consectetur eros dignissim id. Quisque maximus arcu justo. Pellentesque scelerisque sem nec nisi congue maximus.
+
+		Curabitur aliquet, augue quis viverra molestie, nunc nunc pulvinar nisl, quis sagittis mi ex vel orci. Integer id blandit mauris. Quisque ac sodales mi, vel lacinia mauris. Ut suscipit ligula quis finibus efficitur. Maecenas ante massa, consectetur quis est a, imperdiet convallis nisi. Proin vel tempor risus, eget pellentesque eros. Maecenas ac euismod mi. Duis a elementum turpis. Mauris at mattis augue. In nisi augue, hendrerit vel dui sed, luctus pellentesque enim.
+	  </p>
 	</core-overlay>
 
-	<core-overlay class="pl-account-overlay" id="success-overlay" backdrop layered closeattribute="close">
+	<core-overlay class="pl-signup-overlay" id="success-overlay" backdrop layered closeattribute="close">
 	  <paper-button class="link" close>Close</paper-button>
 	  <div class="content"></div>
 	</core-overlay>
@@ -102,126 +153,129 @@ Element providing solution to no problem in particular.
 
   <script>
 
-    Polymer({
-	  
-	  /**
-       * The `marketing` attribute determines whether or not to show marketing material as part of your `<pl-sign-up>`
-       *
-       * @attribute marketing
-       * @type boolean
-       * @default false
-       */
-	  marketing: false,
+   Polymer({
+	 
+	 /**
+      * The `marketing` attribute determines whether or not to show marketing material as part of your `<pl-sign-up>`
+      *
+      * @attribute marketing
+      * @type boolean
+      * @default false
+      */
+	 marketing: false,
 
-      /**
-       * The `author` attribute sets an initial author
-       *
-       * @attribute author
-       * @type string
-       * @default 'Daniel Gleckler'
-       */
-      author: 'Daniel Gleckler',
+     /**
+      * The `author` attribute sets an initial author
+      *
+      * @attribute author
+      * @type string
+      * @default 'Daniel Gleckler'
+      */
+     author: 'Daniel Gleckler',
 
-      ready: function() {
-        // Ready is a lifecycle callback.
-        // You can do setup work in here.
-        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
+     ready: function() {
+       // Ready is a lifecycle callback.
+       // You can do setup work in here.
+       // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
 
 
-		this.params = {
-		  firstName: '',
-		  lastName: '',
-		  email: '',
-		  password: '',
-		  agree: false,
-		  token: 'a'
-		}
-      },
+	   this.params = {
+		 firstName: '',
+		 lastName: '',
+		 email: '',
+		 password: '',
+		 agree: false,
+		 token: 'a'
+	   }
+     },
 
-	  change: function() {
-		
-		if (this.shadowRoot.querySelectorAll('pl-input-decorator.invalid').length || !this.$['agree-checkbox'].checked) {
-		  this.valid = false;
-		}
-		else {
-		  this.valid = true;
-		}
-		
-	  },
+	 change: function() {
+	   
+	   if (this.shadowRoot.querySelectorAll('pl-input-decorator.invalid').length || !this.$['agree-checkbox'].checked) {
+		 this.valid = false;
+	   }
+	   else {
+		 this.valid = true;
+	   }
+	   
+	 },
 
-	  validate: function() {
-		this.shadowRoot.querySelectorAll('pl-input-decorator').array()
-					   .forEach(
-						 function(input) {
-						   input.validation = true;
-						   input.startValidation();
-						 });
+	 validate: function() {
+	   this.shadowRoot.querySelectorAll('pl-input-decorator').array()
+					  .forEach(
+						function(input) {
+						  input.validation = true;
+						  input.startValidation();
+						});
 
-		if (!this.$['agree-checkbox'].checked) {
-		  this.$['agree-checkbox'].classList.add('invalid');
-		}
-		
-		this.change();
-		
-	  },
-	  
-	  signUp: function() {
-		
-		this.validate();
+	   if (!this.$['agree-checkbox'].checked) {
+		 this.$['agree-checkbox'].classList.add('invalid');
+	   }
+	   
+	   this.change();
+	   
+	 },
+	 
+	 signUp: function() {
+	   
+	   this.validate();
 
-		var that = this;
-		
-		// get in line - validation is event-based
-		setTimeout(function() {
+	   var that = this;
+	   
+	   // get in line - validation is event-based
+	   setTimeout(function() {
 
-		  that.change();
-		  
-		  if (that.valid) {
-			that.$.ajax.go();
-		  }
-		},0);
-		
-		
-	  },
+		 that.change();
+		 
+		 if (that.valid) {
+		   that.$.ajax.go();
+		 }
+	   },0);
+	   
+	   
+	 },
 
-	  valid: false,
-	  
-	  userCreateUrl: 'http://54.84.119.67:1337/api/users/register', // this should be retrieved (http://54.84.119.67:1337/api/discovery/users/create/links/api), not hard-coded
-	  
-	  signUpSuccess: function(response) {
-		this.$['success-overlay'].querySelector('.content').innerText = response.message || 'Success! Check your email for a confirmation link';
-		this.$['success-overlay'].open();
-	  },
+	 valid: false,
+	 
+	 userCreateUrl: 'http://54.84.119.67:1337/api/users/register', // this should be retrieved (http://54.84.119.67:1337/api/discovery/users/create/links/api), not hard-coded
+	 
+	 signUpSuccess: function(response) {
+	   this.$['success-overlay'].querySelector('.content').innerText = response.message || 'Success! Check your email for a confirmation link';
+	   this.$['success-overlay'].open();
+	 },
 
-	  signUpFailure: function(response) {
-		this.$.toast.text = response.message || 'Whoops, looks like we\'re having trouble creating your account. Try again in a few minutes.'; // TODO: align this with actual server response message
-		//this.$.toast.open();
-		this.$.toast.opened = true;
-	  },
+	 signUpFailure: function(response) {
 
-	  // TODO: create a pl-checkbox with this functionality
-	  agreeChanged: function(e,detal,el) {
-		if (el.checked || !el.hasAttribute('required')) {
-		  el.classList.remove('invalid');
-		}
-		
-		this.change();
-	  },
+	   // TODO: add the following messages to the appropriate place on the server
+	   // Email already exists: "This email has already been used to register an account. Forgot your password?"
 
-	  decoratorInvalid: function(e,detail,el) {
-		console.log(detail.error);
-	  },
+	   this.$.toast.text = response.message || 'Whoops, looks like we\'re having trouble creating your account. Try again in a few minutes.'; // TODO: align this with actual server response message
+	   this.$.toast.opened = true;
+	 },
 
-	  showTerms: function() {
-		this.$['terms-overlay'].open();
-	  },
+	 // TODO: create a pl-checkbox with this functionality
+	 agreeChanged: function(e,detal,el) {
+	   if (el.checked || !el.hasAttribute('required')) {
+		 el.classList.remove('invalid');
+	   }
+	   
+	   this.change();
+	 },
 
-	  showPolicy: function() {
-		this.$['policy-overlay'].open();
-	  }
-						 
+	 decoratorInvalid: function(e,detail,el) {
+	   //console.log(detail.error);
+	 },
 
-    });
+	 showTerms: function() {
+	   this.$['terms-overlay'].open();
+	 },
+
+	 showPolicy: function() {
+	   this.$['policy-overlay'].open();
+	 }
+	 
+
+   });
 
   </script>
 
