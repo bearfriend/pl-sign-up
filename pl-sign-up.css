@@ -64,11 +64,15 @@ ul.marketing li#vp3::before {
 background-image: url("images/download_icon.png");
   }
 
+#heading {
+	margin-botom: .67em;
+}
+
 .marketing-heading {
 	font-size: 1.1em;
-	color: white;
+	color: #fff;
 }
 
 .marketing-text {
-	color: #CE9EB8;
+	color: #ce9eb8;
 }
