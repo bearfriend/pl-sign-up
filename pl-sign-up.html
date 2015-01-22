@@ -8,6 +8,8 @@
 <link rel="import" href="../core-ajax/core-ajax.html">
 <link rel="import" href="../core-a11y-keys/core-a11y-keys.html">
 <link rel="import" href="../core-overlay/core-overlay.html" />
+<link rel="import" href="../pl-globals/pl-globals.html">
+
 
 <!--
 Element providing solution to no problem in particular.
@@ -35,6 +37,8 @@ Element providing solution to no problem in particular.
 <polymer-element name="pl-sign-up" layout horizontal reverse wrap around-justified attributes="marketing" on-input="{{ change }}" on-decorator-invalid="{{ decoratorInvalid }}">
   
   <template>  
+
+	<pl-globals id="globals"></pl-globals>
 	
 	<link rel="stylesheet" href="pl-sign-up.css" />
 	
@@ -178,6 +182,7 @@ Element providing solution to no problem in particular.
        // You can do setup work in here.
        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
 
+	   this.userCreateUrl = this.$.globals.apiEndpoint+'/users/register',
 
 	   this.params = {
 		 firstName: '',
@@ -236,8 +241,6 @@ Element providing solution to no problem in particular.
 	 },
 
 	 valid: false,
-	 
-	 userCreateUrl: 'http://54.84.119.67:1337/api/users/register', // this should be retrieved (http://54.84.119.67:1337/api/discovery/users/create/links/api), not hard-coded
 	 
 	 signUpSuccess: function(response) {
 	   this.$['success-overlay'].querySelector('.content').innerText = response.message || 'Success! Check your email for a confirmation link';
