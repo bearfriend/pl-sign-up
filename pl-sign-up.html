@@ -68,7 +68,7 @@ Element providing solution to no problem in particular.
 		<input id="passw-input" type="password" value="{{ params.password }}" pattern=".{8,}" />
 	  </pl-input-decorator>
 	  <span layout horizontal class="form-row">
-		<paper-checkbox class="form-row" label="" required id="agree-checkbox" on-core-change="{{ agreeChanged }}" start required></paper-checkbox>
+		<paper-checkbox class="form-row" label="" required id="agree-checkbox" on-core-change="{{ acceptedTOSChanged }}" start required></paper-checkbox>
 		<div>I am 13 years of age or older and accept the <paper-button class="link" on-tap="{{ showTerms }}">Service Agreement</paper-button> and <paper-button class="link" on-tap="{{ showPolicy }}">Privacy Policy</paper-button>.</div>
 	  </span>
 	  <paper-button id="sign-up-button" class="form-row" on-click="{{ signUp }}" onfocus="console.log('focus');">Sign Up</paper-button>
@@ -189,7 +189,7 @@ Element providing solution to no problem in particular.
 		 lastName: '',
 		 email: '',
 		 password: '',
-		 agree: false,
+		 acceptedTOS: false,
 		 token: 'a'
 	   }
      },
@@ -257,9 +257,13 @@ Element providing solution to no problem in particular.
 	 },
 
 	 // TODO: create a pl-checkbox with this functionality
-	 agreeChanged: function(e,detal,el) {
-	   if (el.checked || !el.hasAttribute('required')) {
+	 acceptedTOSChanged: function(e,detal,el) {
+	   if (el.checked) {
 		 el.classList.remove('invalid');
+		 this.params.acceptedTOS = true;
+	   }
+	   else {
+		 this.params.acceptedTOS = false;
 	   }
 	   
 	   this.change();
